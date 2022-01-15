@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 // * STYLES
-import { Wrapper, Block, Title, Text, Link, Jobs, JobsItem, Img } from './style'
+import { Wrapper, Block, Title, Text, Link, Education, EducationItem, Img } from './style'
 
 // * FIREBASE
 import { getFirestore } from "firebase/firestore";
@@ -48,20 +48,20 @@ export function EducationPreview() {
                     </svg>
                 </Link>
             </Block>
-            <Jobs className="block">
+            <Education className="block">
                 {
                     education.map((item, i) =>
-                        <JobsItem key={i}>
-                            <Link href="/jobs">
+                        <EducationItem key={i}>
+                            <Link href="/education">
                                 <Img src={item.img} alt={`img-${item.id}`} />
                             </Link>
                             <Text>
                                 {item.school}
                             </Text>
-                        </JobsItem>
+                        </EducationItem>
                     )
                 }
-            </Jobs>
+            </Education>
         </Wrapper>
     )
 }

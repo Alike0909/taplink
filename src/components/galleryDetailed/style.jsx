@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import * as Colors from '../../styles/colors'
 
 export const Wrapper = styled.div`
-    padding: 48px 24px;
+    padding: 24px;
     background: white;
     font-family: 'Montserrat', sans-serif !important;
 `;

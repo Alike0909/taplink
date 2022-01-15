@@ -43,12 +43,12 @@ export const Text = styled.span`
     font-size: 9px;
 `;
 
-export const Jobs = styled.div`
+export const Education = styled.div`
     display: flex;
     flex-wrap: wrap;
 `
 
-export const JobsItem = styled.div`
+export const EducationItem = styled.div`
     overflow: hidden;
     margin-top: 12px;
     margin-right: 12px;
@@ -60,10 +60,17 @@ export const JobsItem = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    ${Link} {
+        overflow: hidden;
+        margin-bottom: 4px;
+        padding: 4px;
+        border-radius: 12px;
+        border: 1px solid rgb(102, 103, 171, 0.3);
+    }
 `
 
 export const Img = styled.img`
-    margin-bottom: 8px;
     width: 100%;
     max-width: 80px;
     max-height: 80px;

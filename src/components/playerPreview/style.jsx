@@ -43,12 +43,19 @@ export const Text = styled.span`
     font-size: 9px;
 `;
 
-export const Jobs = styled.div`
+export const Music = styled.div`
     display: flex;
     flex-wrap: wrap;
+
+    ${Link} {
+        overflow: hidden;
+        margin-bottom: 4px;
+        border-radius: 12px;
+        border: 1px solid rgb(102, 103, 171, 0.3);
+    }
 `
 
-export const JobsItem = styled.div`
+export const MusicItem = styled.div`
     overflow: hidden;
     margin-top: 12px;
     margin-right: 12px;
@@ -60,17 +67,30 @@ export const JobsItem = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    ${Link} {
-        overflow: hidden;
-        margin-bottom: 4px;
-        border-radius: 12px;
-        border: 1px solid rgb(102, 103, 171, 0.3);
-    }
 `
 
 export const Img = styled.img`
     width: 100%;
     min-width: 90px;
-    min-height: 90px;
+    max-height: 120px;
+`
+
+export const MusicItemMask = styled.div`
+    margin-top: 12px;
+    padding: 12px;
+    width: calc(33.3333% - 6px);
+    min-width: 100px;
+    min-height: 100px;
+    color: ${Colors.very_peri};
+    border-radius: 12px;
+    border: 1px dashed ${Colors.very_peri};
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    svg {
+        margin-bottom: 6px;
+    }
 `

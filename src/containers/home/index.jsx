@@ -7,6 +7,7 @@ import { Wrapper, Block, Avatar, Title, Text, Link } from './style'
 import { GalleryPreview } from '../../components/galleryPreview'
 import { JobsPreview } from '../../components/jobsPreview'
 import { EducationPreview } from '../../components/educationPreview'
+import { PlayerPreview } from '../../components/playerPreview'
 
 export function Home() {
 
@@ -48,6 +49,7 @@ export function Home() {
             <GalleryPreview />
             <EducationPreview />
             <JobsPreview />
+            <PlayerPreview />
         </Wrapper>
     )
 }
