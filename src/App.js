@@ -4,6 +4,7 @@ import 'antd/dist/antd.css'
 // * COMPONENTS
 import { Dashboard } from './containers/dashboard'
 import { GalleryDetailed } from './components/galleryDetailed'
+import { PlayerDetailed } from './components/playerDetailed'
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route exact path="/" component={IndexRedirect} />
           <Route path={'/dashboard'} component={(props) => <Dashboard {...props} />} />
           <Route path={'/gallery'} component={(props) => <GalleryDetailed {...props} />} />
+          <Route path={'/music'} component={(props) => <PlayerDetailed {...props} />} />
         </Switch>
       </Router>
     </div>

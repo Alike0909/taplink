@@ -107,7 +107,7 @@ export const SmallText = styled.span`
 `
 
 export const Quotes = styled.q`
-    quotes: "„" "“" "‚" "‘";
+    quotes: "“" "„" "‚" "‘";
 `
 
 export const GalleryItemMask = styled.div`
