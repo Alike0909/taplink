@@ -97,17 +97,6 @@ export const Quotes = styled.q`
     quotes: "“" "„" "‚" "‘";
 `
 
-export const MusicItemMask = styled.div`
-    margin-top: 24px;
-    width: 100%;
-`
-
-export const Counter = styled.span`
-    padding: 6px 12px;   
-    font-size: 18px;
-    font-weight: bold;
-`
-
 export const Footer = styled.div`
     position: fixed;
     left: 0;
@@ -135,7 +124,7 @@ export const Player = styled.div`
         z-index: 1;
         overflow: hidden;
         width: fit-content;
-        min-width: 38px;
+        max-width: 38px;
         border-radius: 6px;
     }
 
@@ -172,4 +161,37 @@ export const PlayerProgress = styled.div`
 export const PlayerDuration = styled.div`
     opacity: 0.6;
     display: flex;
+`
+
+export const MusicItemMask = styled.div`
+    overflow: hidden;
+    margin-top: 24px;
+    width: 100%;
+    min-height: 44px;
+    border-radius: 12px;
+    border: 1px dashed ${Colors.very_peri};
+
+    display: flex;
+
+    ${Block} {
+        width: fit-content;
+    }
+
+    ${Block}:nth-child(2) {
+        width: 100%;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    ${Block}:nth-child(3) {
+        min-width: 64px;
+        color: ${Colors.very_peri};
+        justify-content: flex-start;
+    }
+`
+
+export const Counter = styled.span`
+    padding: 6px 12px;   
+    font-size: 18px;
+    font-weight: bold;
 `

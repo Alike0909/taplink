@@ -14,7 +14,7 @@ function App() {
           <Route exact path="/" component={IndexRedirect} />
           <Route path={'/dashboard'} component={(props) => <Dashboard {...props} />} />
           <Route path={'/gallery'} component={(props) => <GalleryDetailed {...props} />} />
-          <Route path={'/music'} component={(props) => <PlayerDetailed {...props} />} />
+          <Route path={'/music'} component={(props) => <PlayerDetailed {...props}/>} />
         </Switch>
       </Router>
     </div>

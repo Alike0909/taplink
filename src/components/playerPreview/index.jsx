@@ -27,7 +27,7 @@ export function PlayerPreview() {
         setMusic([])
         let querySnapshot = await getDocs(query(collection(db, "music"), orderBy('author', 'desc'), limit(3)))
         querySnapshot.forEach((doc) => {
-            setMusic(prev => [...prev, { ...doc.data(), id: doc.id }])
+            setMusic(prev => [...prev, { ...doc.data(), uid: doc.id }])
         });
     }
 
@@ -52,7 +52,7 @@ export function PlayerPreview() {
                 {
                     music.map((item, i) =>
                         <MusicItem key={i}>
-                            <Link href="/music">
+                            <Link href={"/music/" + item.uid}>
                                 <Img src={item.img} alt={`img-${item.id}`} />
                             </Link>
                             <Text>

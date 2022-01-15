@@ -3,7 +3,7 @@ import { useSwipeable } from 'react-swipeable';
 import ReactPlayer from 'react-player'
 
 // * STYLES
-import { Wrapper, Block, Title, Link, Button, Music, MusicItemMask, LargeText, Text, Img, Quotes, Player, PlayerProgress, PlayerDuration, Footer } from './style'
+import { Wrapper, Block, Title, Link, Button, Music, MusicItemMask, LargeText, Text, Img, Quotes, Player, PlayerProgress, PlayerDuration, Counter, Footer } from './style'
 
 // * FIREBASE
 import { getFirestore } from "firebase/firestore";
@@ -12,7 +12,7 @@ import { collection, getDocs, query, orderBy, limit } from "firebase/firestore";
 // * COMPONENTS
 import { PlayerItem } from "../playerItem"
 
-export function PlayerDetailed() {
+export function PlayerDetailed(props) {
 
     // * PROPS START
 
@@ -41,7 +41,7 @@ export function PlayerDetailed() {
         setMusic([])
         let querySnapshot = await getDocs(query(collection(db, "music"), orderBy('author', 'desc'), limit(3)))
         querySnapshot.forEach((doc) => {
-            setMusic(prev => [...prev, { ...doc.data(), id: doc.id }])
+            setMusic(prev => [...prev, { ...doc.data(), uid: doc.id }])
         });
     }
 
@@ -68,8 +68,15 @@ export function PlayerDetailed() {
     });
 
     const playMusic = (data) => {
+        if (player.data.uid == data.uid) {
+            setPlayer(prev => (
+                { ...prev, data: data, isPlaying: !player.isPlaying }
+            ))
+            return;
+        }
+
         setPlayer(prev => (
-            { ...prev, data: data, isPlaying: !player.isPlaying }
+            { ...prev, data: data, isPlaying: true }
         ))
     }
 
@@ -79,6 +86,14 @@ export function PlayerDetailed() {
             { ...prev, width: component.current.children[0].offsetWidth}
         ))
     }, [])
+
+    useEffect(() => {
+        const path = props.location.pathname.replace('/music/', '')
+        path.replace('/music', '') != '' ?
+            music.map(item => item.uid == path && playMusic(item))
+            :
+            music[0] && playMusic(music[0])
+    }, [music])
 
     return (
         <Wrapper className="dashboard">
@@ -105,6 +120,21 @@ export function PlayerDetailed() {
             </Block>
             <Music className="music">
                 <PlayerItem music={music} playMusic={playMusic} player={player}/>
+                <MusicItemMask>
+                    <Block>
+                        <Counter>{(music.length + 1).toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })}</Counter>
+                    </Block>
+                    <Block column>
+                        <Text>...coming soon</Text>
+                    </Block>
+                    <Block>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-music-note-beamed" viewBox="0 0 16 16">
+                            <path d="M6 13c0 1.105-1.12 2-2.5 2S1 14.105 1 13c0-1.104 1.12-2 2.5-2s2.5.896 2.5 2zm9-2c0 1.105-1.12 2-2.5 2s-2.5-.895-2.5-2 1.12-2 2.5-2 2.5.895 2.5 2z" />
+                            <path fill-rule="evenodd" d="M14 11V2h1v9h-1zM6 3v10H5V3h1z" />
+                            <path d="M5 2.905a1 1 0 0 1 .9-.995l8-.8a1 1 0 0 1 1.1.995V3L5 4V2.905z" />
+                        </svg>
+                    </Block>
+                </MusicItemMask>
                 <ReactPlayer
                     ref={ref}
                     url={player.data?.link}
@@ -115,11 +145,9 @@ export function PlayerDetailed() {
                     onProgress={(event) => setPlayer(prev => (
                         { ...prev, progress: event }
                     ))}
+                    onEnded={() => playMusic(music[player.data.id] ? music[player.data.id] : music[player.data.id - 1])}
                     style={{ display: 'none' }}
                 />
-                <MusicItemMask>
-                    
-                </MusicItemMask>
             </Music>
             <Footer ref={component} isVisible={player.isPlaying}>
                 <Player {...handlers}>
