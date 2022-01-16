@@ -50,7 +50,6 @@ export function PlayerDetailed(props) {
     const handlers = useSwipeable({
         onSwiping: (e) => {
             const position = (e.deltaX + e.initial[0]) / player.width
-            console.log(position)
             if (ref.current !== null) {
                 if (position < 0.83 || position > 0.96) {
                     if (position < 0) {
@@ -145,7 +144,7 @@ export function PlayerDetailed(props) {
                     onProgress={(event) => setPlayer(prev => (
                         { ...prev, progress: event }
                     ))}
-                    onEnded={() => playMusic(music[player.data.id] ? music[player.data.id] : music[player.data.id - 1])}
+                    onEnded={() => playMusic(music[player.data.id] ? music[player.data.id] : music[player.data.id - 2])}
                     style={{ display: 'none' }}
                 />
             </Music>

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { keyframes } from 'styled-components'
 import * as Colors from '../../styles/colors'
 
 export const Wrapper = styled.div`
@@ -57,4 +58,74 @@ export const Text = styled.span`
 
 export const Link = styled.a`
     color: ${Colors.very_peri};
+`
+
+export const Divider = styled.div`
+    margin: 24px 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    ${Text} {
+        padding: 0 6px;
+        width: fit-content;
+        color: ${Colors.very_peri};
+        white-space: nowrap;
+    }
+
+    &::before {
+        content: '';
+        width: 80%;
+        height: 4px;
+        border-radius: 6px;
+        background: ${Colors.very_peri}
+    }
+
+    &::after {
+        content: '';
+        width: 20%;
+        height: 4px;
+        border-radius: 6px;
+        background: ${Colors.very_peri}
+    }
+`
+
+export const Bio = styled.div`
+    margin-top: 24px;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    ${Block}:first-child {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        ${Text} {
+            color: ${Colors.very_peri};
+            display: flex;
+            align-items: center;
+
+            svg {
+                margin-right: 2px;
+            }
+        }
+
+        ${Text}:nth-child(2) {
+            text-decoration: underline;
+            font-size: 12px;
+        }
+    }
+
+    ${Block} {
+        align-items: flex-start;
+
+        ${Text} {
+            color: black;
+            text-decoration: none;
+            text-transform: capitalize;
+        }
+    }
 `

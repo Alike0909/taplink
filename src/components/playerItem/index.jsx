@@ -1,24 +1,35 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import { useHistory } from "react-router-dom";
 
 // * STYLES
-import { Block, Link, Button, MusicItem, Text, Counter } from './style'
+import { Block, Link, Button, MusicItem, Text, Counter, MusicProgress } from './style'
 
 export function PlayerItem({ music, playMusic, player }) {
 
+    const history = useHistory()
+    
     return (
         <>
             {
                 music.map((item, i) =>
                     <MusicItem key={i}>
                         <Block onClick={() => playMusic(item)}>
-                            <Counter>{(i + 1).toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })}</Counter>
+                            <Counter>{
+                                player.data.uid == item.uid &&
+                                    player.isPlaying ?
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" fill="currentColor" class="bi bi-pause-fill" viewBox="0 0 16 16">
+                                            <path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z" />
+                                        </svg>
+                                        :
+                                        (i + 1).toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })
+                            }</Counter>
                         </Block>
                         <Block column onClick={() => playMusic(item)}>
                             <Text>{item.name}</Text>
                             <Text blurred>{item.author} - {item.published}</Text>
                         </Block>
                         <Block>
-                            <Link to={item.link} download>
+                            <Link download>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
                                     <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
                                     <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
@@ -30,6 +41,7 @@ export function PlayerItem({ music, playMusic, player }) {
                                 </svg>
                             </Button>
                         </Block>
+                        <MusicProgress width={`${player.data.uid == item.uid && player.progress.played * 100}%`}/>
                     </MusicItem>
                 )
             }

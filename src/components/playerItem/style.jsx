@@ -44,12 +44,20 @@ export const Button = styled.button`
 `
 
 export const MusicItem = styled.div`
+    position: relative; 
     margin-top: 24px;
     width: 100%;
+    border-radius: 12px;
     display: flex;
 
     ${Block} {
+        z-index: 1;
         width: fit-content;
+    }
+
+    ${Block}:first-child {
+        border-top-left-radius: 12px;
+        border-bottom-left-radius: 12px;
     }
 
     ${Block}:nth-child(2) {
@@ -59,6 +67,8 @@ export const MusicItem = styled.div`
 
     ${Block}:nth-child(3) {
         max-width: 64px;
+        border-top-right-radius: 12px;
+        border-bottom-right-radius: 12px;
     }
 `
 export const Text = styled.span`
@@ -72,4 +82,20 @@ export const Counter = styled.span`
     padding: 6px 12px;   
     font-size: 18px;
     font-weight: bold;
+
+    display: flex;
+    align-items: center;    
+    justify-content: center;
+`
+
+export const MusicProgress = styled.div`
+    position: absolute;
+    z-index: 0;
+    top: -1px;
+    left: -1px;
+    width: ${props => props.width ? `calc(${props.width} + 2px)` : 0};
+    height: 46px;
+    border-radius: 12px;
+    background: linear-gradient(to right, ${Colors.sweet_lavender}, ${Colors.very_peri}, ${Colors.orient_blue});
+    transition: all 0.4s ease-in-out;
 `

@@ -18,7 +18,19 @@ export function GalleryDetailed() {
 
     // * VARIABLES START
 
+    const styles = {
+        true: {
+            position: 'absolute',
+            top: '24px',
+            left: 0,
+        },
+        false: {
+            position: 'relative'
+        }
+    }
+
     const [gallery, setGallery] = useState([])
+    const [imgSettings, setImgSetting] = useState(false)
 
     // * VARIABLES END
 
@@ -59,7 +71,7 @@ export function GalleryDetailed() {
                     gallery.map((item, i) =>
                         <GalleryItem key={i}>
                             <Block className="block" column>
-                                <Img src={item.link} />
+                                <Img src={item.link} onClick={() => setImgSetting(!imgSettings)} style={styles[imgSettings]}/>
                                 <SmallText>by {item.author} for the qnrt.kz</SmallText>
                                 <SmallText>{moment(item.date).format('DD MMMM, YYYY')}</SmallText>
                             </Block>

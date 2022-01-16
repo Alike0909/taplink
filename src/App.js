@@ -5,6 +5,7 @@ import 'antd/dist/antd.css'
 import { Dashboard } from './containers/dashboard'
 import { GalleryDetailed } from './components/galleryDetailed'
 import { PlayerDetailed } from './components/playerDetailed'
+import { EducationDetailed } from './components/educationDetailed'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path={'/dashboard'} component={(props) => <Dashboard {...props} />} />
           <Route path={'/gallery'} component={(props) => <GalleryDetailed {...props} />} />
           <Route path={'/music'} component={(props) => <PlayerDetailed {...props}/>} />
+          <Route path={'/education'} component={(props) => <EducationDetailed {...props}/>} />
         </Switch>
       </Router>
     </div>

@@ -71,6 +71,7 @@ export const GalleryItem = styled.div`
 `
 
 export const Gallery = styled.div`
+    position: relative;
     background: white;
 
     display: flex;
@@ -86,7 +87,11 @@ export const Gallery = styled.div`
 `
 
 export const Img = styled.img`
+    position: relative;
+    top: 0;
+    z-index: 1;
     width: 100%;
+    transition: all 0.6s ease-in-out;
 `
 
 export const GalleryTitle = styled.span`
