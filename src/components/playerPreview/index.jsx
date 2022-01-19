@@ -40,7 +40,7 @@ export function PlayerPreview() {
     return (
         <Wrapper className="dashboard">
             <Block className="block">
-                <Title>Music</Title>
+                <Title>02. Music</Title>
                 <Link href="/music">
                     more
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">

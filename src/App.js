@@ -7,6 +7,7 @@ import { GalleryDetailed } from './components/galleryDetailed'
 import { PlayerDetailed } from './components/playerDetailed'
 import { EducationDetailed } from './components/educationDetailed'
 import { JobsDetailed } from './components/jobsDetailed'
+import { PortfolioDetailed } from './components/portfolioDetailed'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path={'/music'} component={(props) => <PlayerDetailed {...props}/>} />
           <Route path={'/education'} component={(props) => <EducationDetailed {...props}/>} />
           <Route path={'/jobs'} component={(props) => <JobsDetailed {...props}/>} />
+          <Route path={'/portfolio'} component={(props) => <PortfolioDetailed {...props}/>} />
         </Switch>
       </Router>
     </div>

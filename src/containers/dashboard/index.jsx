@@ -11,6 +11,7 @@ import { Wrapper, Layout, Content, Footer } from './style'
 import { Home } from '../home'
 import { Trading } from '../trading'
 import { Message } from '../message'
+import { User } from '../user'
 import { Navbar } from '../../components/navbar'
 
 // * FIREBASE 
@@ -64,6 +65,11 @@ export function Dashboard(props) {
                     exact
                     path={'/dashboard/message'}
                     component={() => <Message />}
+                />
+                <Route
+                    exact
+                    path={'/dashboard/user'}
+                    component={() => <User />}
                 />
             </>
         )

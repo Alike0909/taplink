@@ -36,7 +36,7 @@ export function EducationDetailed() {
 
     async function fetchEducation() {
         setEducation([])
-        let querySnapshot = await getDocs(query(collection(db, "education"), orderBy('from', 'desc'), limit(3)))
+        let querySnapshot = await getDocs(query(collection(db, "education"), orderBy('from', 'desc')))
         querySnapshot.forEach((doc) => {
             setEducation(prev => [...prev, { ...doc.data(), id: doc.id }])
         });

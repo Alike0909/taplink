@@ -48,8 +48,9 @@ export const Text = styled.span`
 
 export const Input = styled.input`
     outline: none;
+    margin-right: 12px;
     padding: 6px 12px;
-    width: calc(100% - 154px);
+    width: 100%;
     font-size: 16px;
     border-radius: 12px;
     border: none;

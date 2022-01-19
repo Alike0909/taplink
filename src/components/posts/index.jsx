@@ -36,18 +36,17 @@ export function Posts({posts}) {
                         </Status>
                     </Text>
                 </PostItem>
-                <PostItem flex>
-                    {
-                        item?.answer
-                        &&
-                        <>
-                            <img src="https://img.icons8.com/ios-filled/50/000000/right3.png" />
-                            <Text>
-                                {item?.answer}
-                            </Text>
-                        </>
-                    }
-                </PostItem>
+                {
+                    item?.answer
+                    &&
+                    <PostItem flex>
+                        <img src="https://img.icons8.com/ios-filled/50/000000/right3.png" />
+                        <Text>
+                            {item?.answer} <br/>
+                            by: Alnur Mustafayev
+                        </Text>
+                    </PostItem>
+                }
             </Post>
         )
     )

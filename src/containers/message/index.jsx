@@ -57,8 +57,7 @@ export function Message() {
                 <TextArea placeholder="Feel free to use your mothertongue..." onChange={(event) => setQuestion(prev => ({ ...prev, text: event.target.value }))}/>
                 <CharCounter text={question.text}/>
                 <Block className="block" flex>
-                    <Text>Name:</Text>
-                    <Input placeholder="(optional)" onChange={(event) => setQuestion(prev => ({ ...prev, name: event.target.value }))}/>
+                    <Input placeholder="Name: (optional)" onChange={(event) => setQuestion(prev => ({ ...prev, name: event.target.value }))}/>
                     <Button onClick={() => postQuestion({ question })}>Send</Button>
                 </Block>
             </Block>

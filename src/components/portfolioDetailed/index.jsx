@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import moment from 'moment'
 
 // * STYLES
-import { Wrapper, Block, Title, Link, Button, Gallery, GalleryItem, GalleryItemMask, Img, GalleryTitle, Text, SmallText, Quotes } from './style'
+import { Wrapper, Block, Title, Link, Button, Portfolio, PortfolioItem, Img, PortfolioTitle, Text, PortfolioHeading, Features } from './style'
 
 // * FIREBASE
 import { getFirestore } from "firebase/firestore";
 import { collection, getDocs, query, orderBy, limit } from "firebase/firestore";
 
-export function GalleryDetailed() {
+export function PortfolioDetailed(props) {
 
     // * PROPS START
 
@@ -18,36 +17,24 @@ export function GalleryDetailed() {
 
     // * VARIABLES START
 
-    const styles = {
-        true: {
-            position: 'absolute',
-            top: '24px',
-            left: 0,
-        },
-        false: {
-            position: 'relative'
-        }
-    }
-
-    const [gallery, setGallery] = useState([])
-    const [imgSettings, setImgSetting] = useState(false)
+    const [portfolio, setPortfolio] = useState([])
 
     // * VARIABLES END
 
     // * FETCH STARTS
 
-    async function fetchGallery() {
-        setGallery([])
-        let querySnapshot = await getDocs(query(collection(db, "gallery"), orderBy('id', 'asc')))
+    async function fetchPortfolio() {
+        setPortfolio([])
+        let querySnapshot = await getDocs(query(collection(db, "portfolio"), orderBy('id', 'asc')))
         querySnapshot.forEach((doc) => {
-            setGallery(prev => [...prev, { ...doc.data(), id: doc.id }])
+            setPortfolio(prev => [...prev, { ...doc.data(), uid: doc.id }])
         });
     }
 
     // * FETCH ENDS
 
     useEffect(() => {
-        fetchGallery()
+        fetchPortfolio()
     }, [])
 
     return (
@@ -59,32 +46,33 @@ export function GalleryDetailed() {
                     </svg>
                     back
                 </Link>
-                <Title>Gallery</Title>
+                <Title>Portfolio</Title>
                 <Button>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
                         <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
                     </svg>
                 </Button>
             </Block>
-            <Gallery className="gallery">
+            <Portfolio>
                 {
-                    gallery.map((item, i) =>
-                        <GalleryItem key={i}>
-                            <Block className="block" column>
-                                <Img src={item.link} onClick={() => setImgSetting(!imgSettings)} style={styles[imgSettings]}/>
-                                <SmallText>by {item.author} for the qnrt.kz</SmallText>
-                                <SmallText>{moment(item.date).format('DD MMMM, YYYY')}</SmallText>
+                    portfolio.map((item, i) => 
+                        <PortfolioItem key={i}>
+                            <Block>
+                                <Img src={item.gif} />
                             </Block>
-                            <Block className="block" column>
-                                <GalleryTitle bold>
-                                    <Quotes>
-                                        {item.title}
-                                    </Quotes>
-                                </GalleryTitle>
-                                <Text>{item.text}</Text>
-                                <Text>
+                            <Block>
+                                <Block column>
+                                    <PortfolioHeading>Featured Project</PortfolioHeading>
+                                    <PortfolioTitle>{item.name}</PortfolioTitle>
+                                    <Text>{item.desc}</Text>
+                                    <Features>
+                                        {
+                                            item.features?.map((item) => 
+                                                <Text>{item}</Text>
+                                        )}
+                                    </Features>
                                     {
-                                        item.links?.map((link) => 
+                                        item.links && item.links.map(link =>
                                             <Link href={link.link}>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-link-45deg" viewBox="0 0 16 16">
                                                     <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
@@ -92,20 +80,14 @@ export function GalleryDetailed() {
                                                 </svg>
                                                 [[{link.text}]]
                                             </Link>
-                                    )}
-                                </Text>
+                                        )
+                                    }
+                                </Block>
                             </Block>
-                        </GalleryItem>
+                        </PortfolioItem>
                     )
                 }
-                <GalleryItemMask>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-image" viewBox="0 0 16 16">
-                        <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                        <path d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z" />
-                    </svg>
-                    <Text >...coming soon</Text>
-                </GalleryItemMask>
-            </Gallery>
+            </Portfolio>
         </Wrapper>
     )
 }

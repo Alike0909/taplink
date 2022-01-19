@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react'
 
+// * STYLES
+import { Wrapper, Block, Title, Input, Text, Highlighted, Button } from './style'
+
 export function User() {
 
     // * PROPS START
@@ -26,8 +29,18 @@ export function User() {
     }, [])
 
     return (
-        <div className="user">
-
-        </div>
+        <Wrapper className="dashboard">
+            <Block className="block">
+                <Title>Only for Admin</Title>
+                <Input placeholder="Password" type="password"/>
+            </Block>
+            <Block>
+                <Text>...but <Highlighted>feel free</Highlighted> to use url-shortener 👇👇👇</Text>
+            </Block>
+            <Block className="block">
+                <Input placeholder="Shorten your link" type="text" />
+                <Button>Shorten</Button>
+            </Block>
+        </Wrapper>
     )
 }

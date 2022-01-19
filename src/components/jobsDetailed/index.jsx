@@ -33,7 +33,7 @@ export function JobsDetailed(props) {
 
     async function fetchJobs() {
         setJobs([])
-        let querySnapshot = await getDocs(query(collection(db, "jobs"), orderBy('from', 'desc'), limit(3)))
+        let querySnapshot = await getDocs(query(collection(db, "jobs"), orderBy('from', 'desc')))
         querySnapshot.forEach((doc) => {
             setJobs(prev => [...prev, { ...doc.data(), uid: doc.id }])
         });
@@ -59,7 +59,7 @@ export function JobsDetailed(props) {
                     </svg>
                     back
                 </Link>
-                <Title>Work experience</Title>
+                <Title>Employment</Title>
                 <Button>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
                         <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
