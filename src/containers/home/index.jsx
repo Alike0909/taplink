@@ -12,6 +12,7 @@ import { GalleryPreview } from '../../components/galleryPreview'
 import { JobsPreview } from '../../components/jobsPreview'
 import { EducationPreview } from '../../components/educationPreview'
 import { PlayerPreview } from '../../components/playerPreview'
+import { PortfolioPreview} from '../../components/portfolioPreview'
 
 export function Home() {
 
@@ -95,6 +96,7 @@ export function Home() {
             <Divider><Text>for CV</Text></Divider>
             <EducationPreview />
             <JobsPreview />
+            <PortfolioPreview />
         </Wrapper>
     )
 }

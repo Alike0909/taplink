@@ -3,14 +3,14 @@ import { useSwipeable } from 'react-swipeable';
 import ReactPlayer from 'react-player'
 
 // * STYLES
-import { Wrapper, Block, Title, Link, Button, Music, MusicItemMask, LargeText, Text, Img, Quotes, Player, PlayerProgress, PlayerDuration, Counter, Footer } from './style'
+import { Wrapper, Block, Title, Link, Button, Music, MusicItemMask, LargeText, Text, SmallText, Img, Quotes, Player, PlayerProgress, PlayerDuration, Counter, Footer } from './style'
 
 // * FIREBASE
 import { getFirestore } from "firebase/firestore";
 import { collection, getDocs, query, orderBy, limit } from "firebase/firestore";
 
 // * COMPONENTS
-import { PlayerItem } from "../playerItem"
+import { PlayerItems } from "../playerItem"
 
 export function PlayerDetailed(props) {
 
@@ -115,10 +115,11 @@ export function PlayerDetailed(props) {
                     <Quotes>
                         One artist - one favourite  song
                     </Quotes>
+                    <SmallText>concept</SmallText>
                 </LargeText>
             </Block>
             <Music className="music">
-                <PlayerItem music={music} playMusic={playMusic} player={player}/>
+                <PlayerItems music={music} playMusic={playMusic} player={player}/>
                 <MusicItemMask>
                     <Block>
                         <Counter>{(music.length + 1).toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })}</Counter>

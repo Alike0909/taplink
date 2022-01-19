@@ -5,6 +5,15 @@ export const Wrapper = styled.div`
     padding: 24px;
     background: white;
     font-family: 'Montserrat', sans-serif !important;
+
+    @media screen and (min-width: 320px) {
+        width: 100%;
+    }
+
+    @media screen and (min-width: 1024px) {
+        margin: 0 auto;
+        max-width: 775px;
+    }
 `;
 
 export const Block = styled.div`
@@ -82,8 +91,19 @@ export const Img = styled.img`
 `
 
 export const LargeText = styled.span`
-    margin-top: 24px;
+    position: relative;
+    margin-top: 36px;
+    margin-bottom: 24px;
     font-size: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`
+
+export const SmallText = styled.span`
+    font-size: 14px;
+    font-style: italic;
 `
 
 export const Text = styled.span`
@@ -145,6 +165,16 @@ export const Player = styled.div`
         max-width: 36px;
         color: ${Colors.white};
     }
+
+    @media screen and (min-width: 320px) {
+        width: 100%;
+    }
+
+    @media screen and (min-width: 1024px) {
+        margin: 0 auto;
+        margin-bottom: 12px;
+        max-width: 775px;
+    }
 `
 
 export const PlayerProgress = styled.div`
@@ -167,7 +197,7 @@ export const MusicItemMask = styled.div`
     overflow: hidden;
     margin-top: 24px;
     width: 100%;
-    min-height: 44px;
+    min-height: 48px;
     border-radius: 12px;
     border: 1px dashed ${Colors.very_peri};
 

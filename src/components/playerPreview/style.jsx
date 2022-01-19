@@ -79,7 +79,7 @@ export const MusicItemMask = styled.div`
     margin-top: 12px;
     padding: 12px;
     width: calc(33.3333% - 6px);
-    min-width: 100px;
+    max-width: 100px;
     min-height: 100px;
     color: ${Colors.very_peri};
     border-radius: 12px;

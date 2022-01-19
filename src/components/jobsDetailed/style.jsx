@@ -101,7 +101,7 @@ export const TimelineBar = styled.div`
     background: rgb(102, 103, 171, 0.3);
 `
 
-export const EducationItem = styled.div`
+export const JobsItem = styled.div`
     width: 100%;
 
     ${Block}:first-child {
@@ -171,7 +171,7 @@ export const EducationItem = styled.div`
     }
 `
 
-export const Education = styled.div`
+export const Jobs = styled.div`
     position: relative;
     margin-top: 24px;
     display: flex;
@@ -182,7 +182,7 @@ export const Img = styled.img`
     width: 100%;
 `
 
-export const EducationItemMask = styled.div`
+export const JobsItemMask = styled.div`
     margin-bottom: 12px;
     width: 100%;
 

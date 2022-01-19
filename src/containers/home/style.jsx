@@ -63,6 +63,7 @@ export const Link = styled.a`
 export const Divider = styled.div`
     margin: 24px 0;
     width: 100%;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -72,6 +73,7 @@ export const Divider = styled.div`
         width: fit-content;
         color: ${Colors.very_peri};
         white-space: nowrap;
+        text-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     }
 
     &::before {
@@ -79,7 +81,8 @@ export const Divider = styled.div`
         width: 80%;
         height: 4px;
         border-radius: 6px;
-        background: ${Colors.very_peri}
+        background: ${Colors.very_peri};
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     }
 
     &::after {
@@ -87,7 +90,8 @@ export const Divider = styled.div`
         width: 20%;
         height: 4px;
         border-radius: 6px;
-        background: ${Colors.very_peri}
+        background: ${Colors.very_peri};
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     }
 `
 

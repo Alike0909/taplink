@@ -5,6 +5,15 @@ export const Wrapper = styled.div`
     padding: 24px;
     background: white;
     font-family: 'Montserrat', sans-serif !important;
+
+    @media screen and (min-width: 320px) {
+        width: 100%;
+    }
+
+    @media screen and (min-width: 1024px) {
+        margin: 0 auto;
+        max-width: 775px;
+    }
 `;
 
 export const Block = styled.div`

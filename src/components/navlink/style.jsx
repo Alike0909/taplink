@@ -35,5 +35,25 @@ export const MenuItem = styled.div`
     margin-right: 6px;
     display: ${props => props.active ? 'block' : 'none'};
   }
+
+  @media screen and (min-width: 320px) {
+    margin: 0;
+  }
+
+  @media screen and (min-width: 1024px) {
+    margin: 24px 0;
+
+    &:hover {
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+      transition: all 0.3s ease-out;
+
+      span {
+        display: block;
+        color: ${props => props.active ? Colors.orient_blue : 'white'};
+        opacity: ${props => props.active ? '1' : '0.6'};
+        transition: all 0.3s ease-out;
+      }
+    }
+  }
     
 `;

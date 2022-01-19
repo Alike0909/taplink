@@ -46,6 +46,7 @@ export const Button = styled.button`
 export const MusicItem = styled.div`
     position: relative; 
     margin-top: 24px;
+    padding: 2px 0;
     width: 100%;
     border-radius: 12px;
     display: flex;
@@ -92,9 +93,9 @@ export const MusicProgress = styled.div`
     position: absolute;
     z-index: 0;
     top: -1px;
-    left: -1px;
+    left: -2px;
     width: ${props => props.width ? `calc(${props.width} + 2px)` : 0};
-    height: 46px;
+    height: 50px;
     border-radius: 12px;
     background: linear-gradient(to right, ${Colors.sweet_lavender}, ${Colors.very_peri}, ${Colors.orient_blue});
     transition: all 0.4s ease-in-out;

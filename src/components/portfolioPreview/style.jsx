@@ -38,47 +38,29 @@ export const Title = styled.h1`
 `;
 
 export const Text = styled.span`
+    text-align: left;
     width: fit-content;
-    font-size: 12px;
+    font-size: 14px;
 `;
 
-export const Gallery = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-`
-
-export const GalleryItem = styled.div`
-    overflow: hidden;
-    margin-top: 12px;
-    margin-right: 6px;
-    width: calc(33.3333% - 6px);
-    max-width: 100px;
-    max-height: 100px;
-    border-radius: 12px;
-
-    display: flex;
-`
-
-export const Img = styled.img`
-    width: 100%;
-`
-
-export const GalleryItemMask = styled.div`
-    margin-top: 12px;
-    padding: 12px;
-    width: calc(33.3333% - 6px);
-    max-width: 100px;
-    min-height: 100px;
-    color: ${Colors.very_peri};
-    border-radius: 12px;
-    border: 1px dashed ${Colors.very_peri};
-
+export const Portfolio = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: center;
+`
+
+export const PortfolioItem = styled.div`
+    width: 100%;
+    margin-top: 12px;
+    padding: 4px 12px;
+    color: ${Colors.very_peri};
+    border-radius: 6px;
+    border: 1px solid rgb(102, 103, 171, 0.3);
+
+    display: flex;
+    justify-content: flex-start;
     align-items: center;
 
     svg {
-        margin-bottom: 6px;
+        margin-right: 6px;
     }
 `

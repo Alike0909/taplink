@@ -10529,6 +10529,11 @@ react-scripts@4.0.3:
   optionalDependencies:
     fsevents "^2.1.3"
 
+react-scroll-into-view@^1.11.0:
+  version "1.11.0"
+  resolved "https://registry.yarnpkg.com/react-scroll-into-view/-/react-scroll-into-view-1.11.0.tgz#6da21abfd68b97c0948af12b662afd762b320cdc"
+  integrity sha512-4zVsbwH9+Ro1+7Lb4PT8TRjQlcFQ7JMZwX3LDaAG0PaMqJVtIVz6J08my1rKgk7D5tS17AH8G/PagmVtTbM1JQ==
+
 react-spinners@^0.11.0:
   version "0.11.0"
   resolved "https://registry.yarnpkg.com/react-spinners/-/react-spinners-0.11.0.tgz#186fd150cc9f7ab1436227f70d5d113b47e9e43d"
