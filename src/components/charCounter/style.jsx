@@ -10,6 +10,8 @@ export const Text = styled.span`
 `
 
 export const Warning = styled.span`
+    margin-left: 4px;
     margin-bottom: 6px;
     font-size: 16px;
+    color: red;
 `

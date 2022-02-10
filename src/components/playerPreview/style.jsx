@@ -56,11 +56,11 @@ export const Music = styled.div`
 `
 
 export const MusicItem = styled.div`
-    overflow: hidden;
     margin-top: 12px;
-    margin-right: 12px;
+    margin-right: 6px;
     padding: 2px;
-    width: calc(33.3333% - 12px);
+    width: calc(33.3333% - 6px);
+
     max-width: 100px;
     border-radius: 12px;
 
@@ -71,8 +71,8 @@ export const MusicItem = styled.div`
 
 export const Img = styled.img`
     width: 100%;
-    min-width: 90px;
-    max-height: 120px;
+    min-width: 100px;
+    max-height: 130px;
 `
 
 export const MusicItemMask = styled.div`

@@ -12,7 +12,7 @@ import { Posts } from '../../components/posts'
 import { getFirestore, collection, addDoc } from "firebase/firestore"; 
 import { onSnapshot, query, orderBy } from "firebase/firestore";
 
-export function Message() {
+export function Message({ currentUser }) {
 
     // * PROPS START
 
@@ -23,22 +23,27 @@ export function Message() {
     // * VARIABLES START
 
     const [posts, setPosts] = useState([])
+    const [error, setError] = useState(false)
     const [question, setQuestion] = useState({
         text: ``,
         name: ``,
-        date: ``
     })
 
     // * VARIABLES END
 
-    function postQuestion({question}) {
-        addDoc(collection(db, "questions"), { ...question, date: moment().format('YYYY-MM-DD HH:mm:ss') }).then((res) =>
+    async function postQuestion() {
+        !error &&
+        await addDoc(collection(db, "questions"), {
+            date: moment().format('YYYY-MM-DD HH:mm:ss'),
+            name: question.name,
+            text: question.text,
+            user: currentUser,
+        }).then(() => {
             setQuestion({
                 text: ``,
                 name: ``,
-                date: ``
             })
-        );
+        });
     }
 
     useEffect(() => {
@@ -54,11 +59,11 @@ export function Message() {
         <Wrapper className="dashboard">
             <Block className="block">
                 <Title>Ask Question</Title>
-                <TextArea placeholder="Feel free to use your mothertongue..." onChange={(event) => setQuestion(prev => ({ ...prev, text: event.target.value }))}/>
-                <CharCounter text={question.text}/>
+                <TextArea value={question.text} placeholder="Feel free to use your mothertongue..." onChange={(event) => setQuestion(prev => ({ ...prev, text: event.target.value }))}/>
+                <CharCounter text={question.text} setError={setError}/>
                 <Block className="block" flex>
-                    <Input placeholder="Name: (optional)" onChange={(event) => setQuestion(prev => ({ ...prev, name: event.target.value }))}/>
-                    <Button onClick={() => postQuestion({ question })}>Send</Button>
+                    <Input value={question.name} placeholder="Name: (optional)" onChange={(event) => setQuestion(prev => ({ ...prev, name: event.target.value }))}/>
+                    <Button onClick={() => postQuestion()}>Send</Button>
                 </Block>
             </Block>
             <Block className="block">

@@ -7,7 +7,7 @@ import { Wrapper, Block, Title, Link, Button, Music, MusicItemMask, LargeText, T
 
 // * FIREBASE
 import { getFirestore } from "firebase/firestore";
-import { collection, getDocs, query, orderBy, limit } from "firebase/firestore";
+import { collection, getDocs, query, orderBy } from "firebase/firestore";
 
 // * COMPONENTS
 import { PlayerItems } from "../playerItem"
@@ -39,7 +39,7 @@ export function PlayerDetailed(props) {
 
     async function fetchMusic() {
         setMusic([])
-        let querySnapshot = await getDocs(query(collection(db, "music"), orderBy('author', 'desc'), limit(3)))
+        let querySnapshot = await getDocs(query(collection(db, "music"), orderBy('author', 'desc')))
         querySnapshot.forEach((doc) => {
             setMusic(prev => [...prev, { ...doc.data(), uid: doc.id }])
         });

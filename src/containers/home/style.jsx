@@ -3,7 +3,6 @@ import { keyframes } from 'styled-components'
 import * as Colors from '../../styles/colors'
 
 export const Wrapper = styled.div`
-    overflow: scroll;
     padding: 48px 24px 108px;
     background: white;
     font-family: 'Montserrat', sans-serif !important;
@@ -120,6 +119,7 @@ export const Bio = styled.div`
         ${Text}:nth-child(2) {
             text-decoration: underline;
             font-size: 12px;
+            cursor: pointer;
         }
     }
 
@@ -132,4 +132,30 @@ export const Bio = styled.div`
             text-transform: capitalize;
         }
     }
+`
+
+export const Highlighted = styled.span`
+    margin-left: 2px;
+    color: ${Colors.very_peri};
+    font-size: 12px;
+    text-transform: none;
+`
+
+export const Contact = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    ${Text} {
+        margin-bottom: 12px;
+        color: ${Colors.very_peri};
+        font-size: 14px;
+    }
+`
+
+export const Img = styled.img`
+    margin-right: 6px;
+    width: 28px;
+    height: 28px;
 `

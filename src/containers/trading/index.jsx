@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 // * STYLES
-import { Wrapper, Block, Title } from './style'
-
-// * CHARTS 
-import Chart from 'react-apexcharts'
+import { Wrapper, Block, Title, Img, Divider, Tabs, Tab, Posts, Post, PostDetails, PostTitle, PostSubTitle } from './style'
 
 export function Trading(props) {
 
@@ -13,54 +10,6 @@ export function Trading(props) {
     // * PROPS END
 
     // * VARIABLES START
-
-    const data = {
-        series: [
-            60, 40
-        ],
-        options: {
-            chart: {
-                width: 380,
-                type: 'donut',
-            },
-            plotOptions: {
-                pie: {
-                    startAngle: -90,
-                    endAngle: 270
-                }
-            },
-            dataLabels: {
-                enabled: false
-            },
-            colors: ['#707bb4', '#5c609f', '#6667ab', '#5a5b9f', '#7d74a8', '#7e6eac'],
-            fill: {
-                type: 'gradient',
-            },
-            legend: {
-                show: false,
-            },
-            stroke: {
-                width: 1,
-            },
-            responsive: [{
-                breakpoint: 480,
-                options: {
-                    chart: {
-                        width: 360
-                    },
-                    legend: {
-                        position: 'bottom'
-                    }
-                }
-            }]
-        },
-        tooltip: {
-            enabled: false,
-            items: {
-                display: 'none'
-            }
-        }
-    }
 
     // * VARIABLES END
 
@@ -80,8 +29,20 @@ export function Trading(props) {
     return (
         <Wrapper className="dashboard">
             <Block className="block">
-                <Title>Portfolio</Title>
-                <Chart options={data.options} series={data.series} type="donut" width={500} onClick={(event) => console.log(event)}/>
+                <Title>Posts</Title>
+                <Divider></Divider>
+                <Tabs>
+                    <Tab content="Latest"/>
+                </Tabs>
+                <Posts>
+                    <Post>
+                        <PostDetails>
+                            <PostTitle>Trade idea - bearish on OXY (Brent oil)</PostTitle>
+                            <PostSubTitle>Buying SHORT from $37.6, with approximate target to just below $32</PostSubTitle>
+                        </PostDetails>
+                        <Img src="https://www.tradingview.com/i/9bNtyZfu/"/>
+                    </Post>
+                </Posts>
             </Block>
         </Wrapper>
     )

@@ -49,11 +49,10 @@ export const Education = styled.div`
 `
 
 export const EducationItem = styled.div`
-    overflow: hidden;
     margin-top: 12px;
-    margin-right: 12px;
+    margin-right: 6px;
     padding: 2px;
-    width: calc(33.3333% - 12px);
+    width: calc(33.3333% - 6px);
     max-width: 100px;
     border-radius: 12px;
 
@@ -72,6 +71,6 @@ export const EducationItem = styled.div`
 
 export const Img = styled.img`
     width: 100%;
-    max-width: 80px;
-    max-height: 80px;
+    min-width: 90px;
+    max-height: 100px;
 `

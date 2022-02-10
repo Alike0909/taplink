@@ -49,7 +49,7 @@ export const Text = styled.span`
 export const Input = styled.input`
     outline: none;
     margin-right: 12px;
-    padding: 6px 12px;
+    padding: 12px 12px;
     width: 100%;
     font-size: 16px;
     border-radius: 12px;

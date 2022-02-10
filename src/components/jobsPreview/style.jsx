@@ -49,11 +49,10 @@ export const Jobs = styled.div`
 `
 
 export const JobsItem = styled.div`
-    overflow: hidden;
     margin-top: 12px;
-    margin-right: 12px;
+    margin-right: 6px;
     padding: 2px;
-    width: calc(33.3333% - 12px);
+    width: calc(33.3333% - 6px);
     max-width: 100px;
     border-radius: 12px;
 
@@ -71,6 +70,6 @@ export const JobsItem = styled.div`
 
 export const Img = styled.img`
     width: 100%;
-    min-width: 90px;
-    min-height: 90px;
+    min-width: 100px;
+    height: 94px;
 `

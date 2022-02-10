@@ -8,6 +8,9 @@ import { PlayerDetailed } from './components/playerDetailed'
 import { EducationDetailed } from './components/educationDetailed'
 import { JobsDetailed } from './components/jobsDetailed'
 import { PortfolioDetailed } from './components/portfolioDetailed'
+import { WishList } from './containers/wishList'
+
+import { ExternalRedirect } from './containers/externalRedirect'
 
 function App() {
   return (
@@ -21,6 +24,8 @@ function App() {
           <Route path={'/education'} component={(props) => <EducationDetailed {...props}/>} />
           <Route path={'/jobs'} component={(props) => <JobsDetailed {...props}/>} />
           <Route path={'/portfolio'} component={(props) => <PortfolioDetailed {...props}/>} />
+          <Route path="/wishes" component={(props) => <WishList {...props} />} />
+          <Route exact path="/:id" component={(props) => <ExternalRedirect exact {...props} />} />
         </Switch>
       </Router>
     </div>

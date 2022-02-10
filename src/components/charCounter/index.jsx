@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 // * STYLES
 import { Text, Warning } from './style'
 
-export function CharCounter({ text }) {
+export function CharCounter({ text, setError }) {
 
     // * PROPS START
 
@@ -13,9 +13,16 @@ export function CharCounter({ text }) {
 
     function checkAmount(length) {
         if (length > 180) {
+            setError(true)
             return true
         }
 
+        if (length == 0) {
+            setError(true)
+            return false
+        }
+
+        setError(false)
         return false
     }
 

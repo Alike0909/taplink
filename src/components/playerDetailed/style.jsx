@@ -131,7 +131,6 @@ export const Player = styled.div`
     margin: 0 auto;
     margin-bottom: 12px;
     padding: 12px 24px;
-    width: calc(100% - 24px);
     height: 90px;
     max-height: 90px;
     background: ${Colors.sweet_lavender};
@@ -167,12 +166,13 @@ export const Player = styled.div`
     }
 
     @media screen and (min-width: 320px) {
-        width: 100%;
+        width: calc(100% - 24px);
     }
 
     @media screen and (min-width: 1024px) {
         margin: 0 auto;
         margin-bottom: 12px;
+        width: 100%;
         max-width: 775px;
     }
 `
