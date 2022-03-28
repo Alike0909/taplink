@@ -17,6 +17,8 @@ export const Checkbox = styled.div`
     border-radius: 6px;
     border: 1px solid ${props => props.checked ? Colors.very_peri : 'black'};
     background: ${props => props.checked ? Colors.very_peri : 'white'};
+    pointer-events: ${props => props.disabled ? 'none' : 'initial'};
+    opacity: ${props => props.disabled ? 0.3 : 1};
 
     svg {
         width: 24px;
@@ -37,7 +39,7 @@ export const Text = styled.span`
 `
 
 export const Button = styled.button`
-    margin: 0;
+    margin-left: 6px;
     padding: 0;
     outline: none;
     border: none;
@@ -46,7 +48,7 @@ export const Button = styled.button`
     svg {
         width: 24px;
         height: 24px;
-        color: red;
+        color: ${props => props.color || 'black'};
     }
 
     display: flex;

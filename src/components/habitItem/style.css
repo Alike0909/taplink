@@ -1,0 +1,13 @@
+.swiper {
+    margin: 0 !important;
+    z-index: 2 !important;
+}
+
+.swiper-wrapper {
+    min-width: 320px;
+}
+
+.swiper-slide {
+    margin-right: 6px;
+    min-width: 140px;
+} 

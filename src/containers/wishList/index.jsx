@@ -5,21 +5,12 @@ import { observer } from 'mobx-react';
 import { Wrapper, Block, Title, Input, Button, Text, Empty } from './style';
 
 // * CLASSES
-import { WishStore } from '../../classes/wishStore';
+import { WishStore } from '../../stores/wishStore';
 
 // * COMPONENTS 
 import { WishItem } from '../../components/wishItem';
 
-// * FIREBASE 
-import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
-
 export const WishList = observer(() => {
-
-    // * PROPS START
-
-    const db = getFirestore();
-
-    // * PROPS END
 
     // * VARIABLES START
 
@@ -34,7 +25,15 @@ export const WishList = observer(() => {
 
     const toggleWish = (id) => {
         WishStore.toggleWish(id);
-    }
+    };
+
+    const deleteWish = (id) => {
+        WishStore.deleteWish(id);
+    };
+
+    useEffect(() => {
+        WishStore.fetch();
+    }, []);
 
     return (
         <Wrapper className="dashboard">
@@ -54,8 +53,8 @@ export const WishList = observer(() => {
                 <Title>Wish List</Title>
                 {   
                     WishStore.status.remaining > 0 ?
-                        WishStore.wishes.map((item, i) =>
-                            !item.completed && <WishItem id={item.id} title={item.title} checked={item.completed} toggleWish={toggleWish}/>
+                        WishStore.wishes.map((item) =>
+                            !item.completed && <WishItem id={item.id} title={item.title} checked={item.completed} toggleWish={toggleWish} deleteWish={deleteWish}/>
                         ).reverse()
                         :
                         <Empty />
@@ -65,7 +64,7 @@ export const WishList = observer(() => {
                 <Title>Completed Wishes</Title>
                 {   
                     WishStore.status.completed > 0 ?
-                        WishStore.wishes.map((item, i) =>
+                        WishStore.wishes.map((item) =>
                             item.completed && <WishItem id={item.id} title={item.title} checked={item.completed}/>
                         ).reverse()
                         :
